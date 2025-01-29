@@ -72,9 +72,30 @@ public static void main(String[] args) {
            }
         }
     }
-public void insertMiddle() 
-    {    
-//TYPE YOUR CODE HERE
+public void insertMiddle(int data,int pos) 
+    {
+        if(pos<1){
+            System.out.println("Position should be greater than or equal to 1.");
+            return;
+        }
+        Node newNode=new Node(data);
+        if(pos==1){
+            newNode.next=head;
+            head=newNode;
+            return;
+        }
+        Node current = head;
+        int currentPos=1;
+        while(current!=null&&currentPos<pos-1){
+            current =current.next;
+            currentPos++;
+        }
+        if(current==null){
+            System.out.println("Postion out of bounds.");
+            return;
+        }
+        newNode.next=current.next;
+        current.next=newNode;
     }
 
 public void displayList() {
