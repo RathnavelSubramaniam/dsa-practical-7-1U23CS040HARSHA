@@ -73,29 +73,26 @@ public static void main(String[] args) {
         }
     }
 public void insertMiddle(int data,int pos) 
-    {
-        if(pos<1){
-            System.out.println("Position should be greater than or equal to 1.");
-            return;
+    {    
+        //Create a new node    
+        Node newNode = new Node(data);    
+       //temporary node points to head node
+        Node temp=head;
+        if(pos==1)
+        {
+newNode.next=temp;
+        head=newNode;
         }
-        Node newNode=new Node(data);
-        if(pos==1){
-            newNode.next=head;
-            head=newNode;
-            return;
+        else
+        {
+        for(int i=1;i<(pos-1);i++ ) 
+        {    
+            temp = temp.next;    
+        }    
+newNode.next=temp.next;
+temp.next=newNode;
         }
-        Node current = head;
-        int currentPos=1;
-        while(current!=null&&currentPos<pos-1){
-            current =current.next;
-            currentPos++;
-        }
-        if(current==null){
-            System.out.println("Postion out of bounds.");
-            return;
-        }
-        newNode.next=current.next;
-        current.next=newNode;
+System.out.println("Element Inserted");
     }
 
 public void displayList() {
